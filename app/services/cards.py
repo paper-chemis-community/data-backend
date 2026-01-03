@@ -8,4 +8,4 @@ def readCardList() -> dict:
     return result
 
 def readCard(id: str):
-    return readCardList().get(id, -1)
+    return readCardList().get(id, f"No Card {id}")
