@@ -14,5 +14,8 @@ def create_app(config_class='config.DevelopmentConfig'):
     
     from app.routes.reactions import reaction_bp
     app.register_blueprint(reaction_bp, url_prefix="/reaction")
+    
+    from app.routes.matters import matter_bp
+    app.register_blueprint(matter_bp, url_prefix="/matter")
 
     return app

@@ -4,5 +4,5 @@ from ..services import reactions
 reaction_bp = Blueprint("reaction", __name__, "/reaction")
 
 @reaction_bp.route("/<id>")
-def search_card(id):
+def search_reaction(id):
     return reactions.readReaction(id)

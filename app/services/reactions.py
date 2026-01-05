@@ -1,7 +1,7 @@
 import json
 
 def readReactionList() -> dict:
-    with open("reactions/list.json", "r", encoding="utf8") as f:
+    with open("resources/reactions/list.json", "r", encoding="utf8") as f:
         text = f.read()
         result = json.loads(text)
     
@@ -11,7 +11,7 @@ def readReaction(id: str):
     path = readReactionList().get(id, -1)
     if (path == -1):
         return {"message": f"No Reaction {id}"}
-    with open(f"reactions/{path}.json", "r", encoding="utf8") as f:
+    with open(f"resources/reactions/{path}.json", "r", encoding="utf8") as f:
         text = f.read()
         result = json.loads(text)
         
