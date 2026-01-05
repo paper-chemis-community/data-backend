@@ -8,4 +8,11 @@ def readReactionList() -> dict:
     return result
 
 def readReaction(id: str):
-    return readReactionList().get(id, -1)
+    path = readReactionList().get(id, -1)
+    if (path == -1):
+        return {"message": f"No Reaction {id}"}
+    with open(f"reactions/{path}.json", "r", encoding="utf8") as f:
+        text = f.read()
+        result = json.loads(text)
+        
+    return {"message": "OK", "content": result}

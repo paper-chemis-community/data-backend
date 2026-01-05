@@ -8,4 +8,11 @@ def readCardList() -> dict:
     return result
 
 def readCard(id: str):
-    return readCardList().get(id, f"No Card {id}")
+    path = readCardList().get(id, -1)
+    if (path == -1):
+        return {"message": f"No Card {id}"}
+    with open(f"cards/{path}.json", "r", encoding="utf8") as f:
+        text = f.read()
+        result = json.loads(text)
+        
+    return {"message": "OK", "content": result}
