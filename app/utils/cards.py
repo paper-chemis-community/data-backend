@@ -1,3 +1,6 @@
+'''
+读取卡牌定义文件列表和内容
+'''
 import json
 
 def readCardList() -> dict:

@@ -1,3 +1,6 @@
+'''
+读取资源文件列表和路径
+'''
 import json
 
 def readAssetsList() -> dict:

@@ -64,7 +64,8 @@ backend/
 
 ```json
 {
-    "Carbon-Oxygen-": "CarbonDioxide"
+    "Carbon-Oxygen-": "CarbonDioxide",
+    "...": "..."
 }
 ```
 
@@ -76,10 +77,11 @@ backend/
 {
     "pics": {
         "Carbon": "cards/Carbon.png",
-        "Oxygen": "cards/Oxygen.png"
+        "Oxygen": "cards/Oxygen.png",
+        "...": "..."
     },
     "sounds": {
-        // ...
+        "...": "..."
     }
 }
 ```

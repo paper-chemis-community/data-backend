@@ -1,3 +1,6 @@
+'''
+资源文件读取路由
+'''
 from flask import Blueprint, send_file
 from ..utils import assets
 

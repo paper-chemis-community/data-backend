@@ -1,3 +1,6 @@
+'''
+读取物质定义文件列表和内容
+'''
 import json
 
 def readMatterList() -> dict:

@@ -1,3 +1,6 @@
+'''
+读取反应定义文件列表和内容
+'''
 import json
 
 def readReactionList() -> dict:

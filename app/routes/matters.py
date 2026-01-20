@@ -1,3 +1,6 @@
+'''
+物质定义文件读取路由
+'''
 from flask import Blueprint
 from ..utils import matters
 

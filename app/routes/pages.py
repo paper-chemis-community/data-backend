@@ -1,3 +1,6 @@
+'''
+网页路由
+'''
 from flask import Blueprint, jsonify
 
 page_bp = Blueprint("page", __name__, "/")
