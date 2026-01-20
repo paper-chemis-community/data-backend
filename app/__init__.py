@@ -16,5 +16,8 @@ def create_app(config_class='config.Config'):
     
     from app.routes.matters import matter_bp
     app.register_blueprint(matter_bp, url_prefix="/matter")
+    
+    from app.routes.assets import asset_bp
+    app.register_blueprint(asset_bp, url_prefix="/asset")
 
     return app

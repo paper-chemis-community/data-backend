@@ -7,8 +7,10 @@ def readCardList() -> dict:
     
     return result
 
+card_list = readCardList()
+
 def readCard(id: str):
-    path = readCardList().get(id, -1)
+    path = card_list.get(id, -1)
     if (path == -1):
         return {"message": f"No Card {id}"}
     with open(f"resources/cards/{path}.json", "r", encoding="utf8") as f:

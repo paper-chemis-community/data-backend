@@ -7,8 +7,10 @@ def readReactionList() -> dict:
     
     return result
 
+reaction_list = readReactionList()
+
 def readReaction(id: str):
-    path = readReactionList().get(id, -1)
+    path = reaction_list.get(id, -1)
     if (path == -1):
         return {"message": f"No Reaction {id}"}
     with open(f"resources/reactions/{path}.json", "r", encoding="utf8") as f:
