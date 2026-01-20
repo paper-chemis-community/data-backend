@@ -64,7 +64,9 @@ backend/
 
 ```json
 {
-    "Carbon-Oxygen-": "CarbonDioxide",
+    "Carbon-Oxygen-": [
+        "CarbonDioxide"
+    ],
     "...": "..."
 }
 ```
