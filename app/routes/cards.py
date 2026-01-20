@@ -1,8 +1,8 @@
 from flask import Blueprint
-from ..services import cards
+from ..utils import cards
 
 card_bp = Blueprint("card", __name__, "/card")
 
-@card_bp.route("/<id>")
+@card_bp.route("/id/<id>")
 def search_card(id):
     return cards.readCard(id)
