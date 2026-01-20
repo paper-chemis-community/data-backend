@@ -33,7 +33,7 @@ def readReaction(id: str):
 
 def selectReaction(id: str):
     matter_id = match_list.get(id, -1)
-    if (matter_id == -1):
+    if matter_id == -1:
         return {"message": f"No Matter {id}"}
     
     return matter_id
