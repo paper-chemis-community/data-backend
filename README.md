@@ -1,93 +1,105 @@
-# 后端
+# 纸片化学社区版：数据后端
 
+## 项目介绍
 
+纸片化学社区版（Paper Chemis Community）是由 Tiger 开发的一款纸片化学游戏。该游戏使用纸片化学玩法，并带来了更高的自由度。
 
-## Getting started
+本项目为纸片化学社区版的数据后端，为游戏本体提供数据源服务。
 
-To make it easy for you to get started with GitLab, here's a list of recommended next steps.
+## 项目结构
 
-Already a pro? Just edit this README.md and make it your own. Want to make it easy? [Use the template at the bottom](#editing-this-readme)!
+```text
+backend/
 
-## Add your files
-
-* [Create](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#create-a-file) or [upload](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#upload-a-file) files
-* [Add files using the command line](https://docs.gitlab.com/topics/git/add_files/#add-files-to-a-git-repository) or push an existing Git repository with the following command:
-
+- run.py
+- test/
+    - test_*.py
+- app/
+    - __init__.py
+    - models/
+    - routes/
+        - assets.py
+        - cards.py
+        - matters.py
+        - pages.py
+        - reactions.py
+    - utils/
+        - assets.py
+        - cards.py
+        - matters.py
+        - reactions.py
+- resources/
+    - assets/
+        - index.json
+        - pics/
+        - sounds/
+    - cards/
+        - list.json
+    - conditions/
+        - list.json
+    - matters/
+        - list.json
+    - reactions/
+        - list.json
+        - match.json
 ```
-cd existing_repo
-git remote add origin https://git.yearnstudio.cn/paper-chemis-community/backend.git
-git branch -M master
-git push -uf origin master
+
+## 部分文件格式
+
+### list.json
+
+`cards` `matters` 和 `reactions` `conditions` 下的 `list.json` 有相同的格式。每个文件中都只有一个对象。对象的键的内容均是字符串，代表 ID。对象的值的内容均是字符串，代表对应JSON文件的相对路径，不用加 `.json` 后缀名。例如：
+
+```json
+{
+    "C": "NonMetal/Carbon",
+    "O": "NonMetal/Oxygen",
+    "...": "..."
+}
 ```
 
-## Integrate with your tools
+### reactions/match.json
 
-* [Set up project integrations](https://git.yearnstudio.cn/paper-chemis-community/backend/-/settings/integrations)
+`reactions` 目录下的 `match.json` 支持通过反应物匹配反应。该文件的内容是一个对象。对象的键由反应物构成，每个反应物（包括最后一个）后面都有一个 `-` 以间隔开各项反应物。值是反应的 ID，即 `list.json` 中对象的键。例如：
 
-## Collaborate with your team
+```json
+{
+    "Carbon-Oxygen-": [
+        "CarbonDioxide"
+    ],
+    "...": "..."
+}
+```
 
-* [Invite team members and collaborators](https://docs.gitlab.com/ee/user/project/members/)
-* [Create a new merge request](https://docs.gitlab.com/ee/user/project/merge_requests/creating_merge_requests.html)
-* [Automatically close issues from merge requests](https://docs.gitlab.com/ee/user/project/issues/managing_issues.html#closing-issues-automatically)
-* [Enable merge request approvals](https://docs.gitlab.com/ee/user/project/merge_requests/approvals/)
-* [Set auto-merge](https://docs.gitlab.com/user/project/merge_requests/auto_merge/)
+### assets/index.json
 
-## Test and Deploy
+`assets` 目录下的 `index.json` 是资源文件的索引目录文件。该文件的内容是一个对象，每一个键值对对应一个资源文件。键对应的是资源的 ID，值对应的是资源的相对文件路径，不加 `pics/` 或 `sounds/` 前缀。例如：
 
-Use the built-in continuous integration in GitLab.
+```json
+{
+    "pics": {
+        "Carbon": "cards/Carbon.png",
+        "Oxygen": "cards/Oxygen.png",
+        "...": "..."
+    },
+    "sounds": {
+        "...": "..."
+    }
+}
+```
 
-* [Get started with GitLab CI/CD](https://docs.gitlab.com/ee/ci/quick_start/)
-* [Analyze your code for known vulnerabilities with Static Application Security Testing (SAST)](https://docs.gitlab.com/ee/user/application_security/sast/)
-* [Deploy to Kubernetes, Amazon EC2, or Amazon ECS using Auto Deploy](https://docs.gitlab.com/ee/topics/autodevops/requirements.html)
-* [Use pull-based deployments for improved Kubernetes management](https://docs.gitlab.com/ee/user/clusters/agent/)
-* [Set up protected environments](https://docs.gitlab.com/ee/ci/environments/protected_environments.html)
+## 化学反应格式
 
-***
+化学反应由三部分构成：反应物、反应条件、生成物。反应物写在 `reactants`，反应条件写在 `conditions`，生成物写在 `products`。
 
-# Editing this README
+其中的反应物 ID、反应物条件 ID、生成物 ID 都是自定义的。也就是说，同一个反应在不同化学源中的表示方式可能不同。
 
-When you're ready to make this README your own, just edit this file and use the handy template below (or feel free to structure it however you want - this is just a starting point!). Thanks to [makeareadme.com](https://www.makeareadme.com/) for this template.
+## 技术相关
 
-## Suggestions for a good README
+本项目采用工厂模式。所有逻辑代码均放置在 `app` 目录下。所有路由均使用蓝图实现。
 
-Every project is different, so consider which of these sections apply to yours. The sections used in the template are suggestions for most open source projects. Also keep in mind that while a README can be too long and detailed, too long is better than too short. If you think your README is too long, consider utilizing another form of documentation rather than cutting out information.
+## 最佳实践
 
-## Name
-Choose a self-explaining name for your project.
+对于路径和 ID，均应当使用英文字母、下划线和数字，不应当使用包括中文和短横杠在内的其他字符。由此引发的问题后果自负。
 
-## Description
-Let people know what your project can do specifically. Provide context and add a link to any reference visitors might be unfamiliar with. A list of Features or a Background subsection can also be added here. If there are alternatives to your project, this is a good place to list differentiating factors.
-
-## Badges
-On some READMEs, you may see small images that convey metadata, such as whether or not all the tests are passing for the project. You can use Shields to add some to your README. Many services also have instructions for adding a badge.
-
-## Visuals
-Depending on what you are making, it can be a good idea to include screenshots or even a video (you'll frequently see GIFs rather than actual videos). Tools like ttygif can help, but check out Asciinema for a more sophisticated method.
-
-## Installation
-Within a particular ecosystem, there may be a common way of installing things, such as using Yarn, NuGet, or Homebrew. However, consider the possibility that whoever is reading your README is a novice and would like more guidance. Listing specific steps helps remove ambiguity and gets people to using your project as quickly as possible. If it only runs in a specific context like a particular programming language version or operating system or has dependencies that have to be installed manually, also add a Requirements subsection.
-
-## Usage
-Use examples liberally, and show the expected output if you can. It's helpful to have inline the smallest example of usage that you can demonstrate, while providing links to more sophisticated examples if they are too long to reasonably include in the README.
-
-## Support
-Tell people where they can go to for help. It can be any combination of an issue tracker, a chat room, an email address, etc.
-
-## Roadmap
-If you have ideas for releases in the future, it is a good idea to list them in the README.
-
-## Contributing
-State if you are open to contributions and what your requirements are for accepting them.
-
-For people who want to make changes to your project, it's helpful to have some documentation on how to get started. Perhaps there is a script that they should run or some environment variables that they need to set. Make these steps explicit. These instructions could also be useful to your future self.
-
-You can also document commands to lint the code or run tests. These steps help to ensure high code quality and reduce the likelihood that the changes inadvertently break something. Having instructions for running tests is especially helpful if it requires external setup, such as starting a Selenium server for testing in a browser.
-
-## Authors and acknowledgment
-Show your appreciation to those who have contributed to the project.
-
-## License
-For open source projects, say how it is licensed.
-
-## Project status
-If you have run out of energy or time for your project, put a note at the top of the README saying that development has slowed down or stopped completely. Someone may choose to fork your project or volunteer to step in as a maintainer or owner, allowing your project to keep going. You can also make an explicit request for maintainers.
+所有 JSON 文件中的缩进均应当使用 2 个或 4 个空格，而非制表符（`\t`）。

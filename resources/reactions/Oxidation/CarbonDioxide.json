@@ -1,0 +1,12 @@
+{
+    "reactants": [
+        "NonMetal/Carbon",
+        "NonMetal/Oxygen"
+    ],
+    "conditions": [
+        "Ignite"
+    ],
+    "products": [
+        "Compound/Carbon_Dioxide"
+    ]
+}
