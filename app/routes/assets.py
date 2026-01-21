@@ -6,12 +6,16 @@ from ..utils import assets
 
 asset_bp = Blueprint("asset", __name__, "/asset")
 
+@asset_bp.route("/list")
+def asset_list():
+    return assets.readAssetsList()
+
 @asset_bp.route("/pic/<id>")
-def search_matter(id: str):
+def find_pic(id: str):
     path = "../resources/assets/pics/" + assets.readPicPath(id)
     return send_file(path)
 
 @asset_bp.route("/sound/<id>")
-def select_matter(id: str):
+def find_sound(id: str):
     path = "../resources/assets/sounds/" + assets.readSoundPath(id) 
     return send_file(path)

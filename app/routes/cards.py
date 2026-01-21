@@ -6,6 +6,10 @@ from ..utils import cards
 
 card_bp = Blueprint("card", __name__, "/card")
 
+@card_bp.route("/list")
+def card_list():
+    return cards.readCardList()
+
 @card_bp.route("/id/<id>")
 def search_card(id):
     return cards.readCard(id)

@@ -6,10 +6,18 @@ from ..utils import reactions
 
 reaction_bp = Blueprint("reaction", __name__, "/reaction")
 
+@reaction_bp.route("list")
+def reaction_list():
+    return reactions.readReactionList()
+
+@reaction_bp.route("/match")
+def match_list():
+    return reactions.readMatchList()
+
 @reaction_bp.route("/id/<id>")
 def search_reaction(id):
     return reactions.readReaction(id)
 
 @reaction_bp.route("/match/<id>")
-def select_matter(id):
+def select_reaction(id):
     return reactions.selectReaction(id)
