@@ -3,5 +3,6 @@
         "en-US": "Carbon Dioxide",
         "zh-CN": "二氧化碳"
     },
+    "type": "Compound/Gas",
     "mass": 44
 }
