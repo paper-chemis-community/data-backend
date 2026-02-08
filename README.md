@@ -46,6 +46,18 @@ backend/
 
 ## 部分文件格式
 
+### description.json
+
+`resources` 目录下的 `description.json` 是整个源的介绍文件，应当包含源的名字、作者和唯一UUID。其中UUID不带横杠（`-`）。下面给出一个示例：
+
+```json
+{
+    "name": "Offical Example",
+    "author": "Paper Chemis Community Team",
+    "uuid": "6b3d2702c1c345499fc8617d664b3627"
+}
+```
+
 ### list.json
 
 `cards` `matters` 和 `reactions` `conditions` 下的 `list.json` 有相同的格式。每个文件中都只有一个对象。对象的键的内容均是字符串，代表 ID。对象的值的内容均是字符串，代表对应JSON文件的相对路径，不用加 `.json` 后缀名。例如：
