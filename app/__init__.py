@@ -3,6 +3,7 @@ from flask import Flask
 def create_app(config_class='config.Config'):
     app = Flask(__name__)
     app.config.from_object(config_class)
+    app.json.ensure_ascii = False # type: ignore
 
     # 注册蓝图
     from app.routes.pages import page_bp
