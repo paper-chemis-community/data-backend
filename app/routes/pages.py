@@ -4,7 +4,7 @@
 from flask import Blueprint, jsonify
 from ..utils import index
 
-page_bp = Blueprint("page", __name__, "/")
+page_bp = Blueprint("page", __name__, url_prefix="/")
 
 @page_bp.route("/")
 def index_page():

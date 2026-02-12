@@ -4,7 +4,7 @@
 from flask import Blueprint, send_file, jsonify
 from ..utils import assets
 
-asset_bp = Blueprint("asset", __name__, "/asset")
+asset_bp = Blueprint("asset", __name__, url_prefix="/asset")
 
 @asset_bp.route("/list")
 def asset_list():

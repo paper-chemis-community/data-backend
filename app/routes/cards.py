@@ -4,7 +4,7 @@
 from flask import Blueprint, jsonify
 from ..utils import cards
 
-card_bp = Blueprint("card", __name__, "/card")
+card_bp = Blueprint("card", __name__, url_prefix="/card")
 
 @card_bp.route("/list")
 def card_list():

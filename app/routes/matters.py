@@ -4,7 +4,7 @@
 from flask import Blueprint, jsonify
 from ..utils import matters
 
-matter_bp = Blueprint("matter", __name__, "/matter")
+matter_bp = Blueprint("matter", __name__, url_prefix="/matter")
 
 @matter_bp.route("/list")
 def matter_list():

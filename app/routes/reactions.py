@@ -4,7 +4,7 @@
 from flask import Blueprint, jsonify
 from ..utils import reactions
 
-reaction_bp = Blueprint("reaction", __name__, "/reaction")
+reaction_bp = Blueprint("reaction", __name__, url_prefix="/reaction")
 
 @reaction_bp.route("list")
 def reaction_list():
