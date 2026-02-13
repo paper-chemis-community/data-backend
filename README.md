@@ -29,6 +29,7 @@ backend/
         - matters.py
         - reactions.py
 - resources/
+    - description.json
     - assets/
         - index.json
         - pics/
@@ -48,13 +49,17 @@ backend/
 
 ### description.json
 
-`resources` 目录下的 `description.json` 是整个源的介绍文件，应当包含源的名字、作者和唯一UUID。其中UUID不带横杠（`-`）。下面给出一个示例：
+`resources` 目录下的 `description.json` 是整个源的介绍文件，应当包含源的名字、作者和唯一UUID以及规则。其中UUID不带横杠（`-`）。下面给出一个示例：
 
 ```json
 {
     "name": "Offical Example",
     "author": "Paper Chemis Community Team",
-    "uuid": "6b3d2702c1c345499fc8617d664b3627"
+    "uuid": "6b3d2702c1c345499fc8617d664b3627",
+
+    "rules": {
+        "common": true
+    }
 }
 ```
 

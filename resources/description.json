@@ -1,5 +1,9 @@
 {
     "name": "Offical Example",
     "author": "Paper Chemis Community Team",
-    "uuid": "6b3d2702c1c345499fc8617d664b3627"
+    "uuid": "6b3d2702c1c345499fc8617d664b3627",
+
+    "rules": {
+        "common": true
+    }
 }
