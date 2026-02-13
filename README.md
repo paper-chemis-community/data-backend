@@ -49,7 +49,7 @@ backend/
 
 ### description.json
 
-`resources` 目录下的 `description.json` 是整个源的介绍文件，应当包含源的名字、作者和唯一UUID以及规则。其中UUID不带横杠（`-`）。下面给出一个示例：
+`resources` 目录下直属的 `description.json` 是整个源的介绍文件，应当包含源的名字、作者和唯一UUID以及规则。其中UUID不带横杠（`-`）。下面给出一个示例：
 
 ```json
 {
@@ -58,7 +58,7 @@ backend/
     "uuid": "6b3d2702c1c345499fc8617d664b3627",
 
     "rules": {
-        "common": true
+        "common": true // common 代表通常的纸片化学玩法
     }
 }
 ```
