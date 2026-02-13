@@ -29,6 +29,7 @@ backend/
         - matters.py
         - reactions.py
 - resources/
+    - description.json
     - assets/
         - index.json
         - pics/
@@ -45,6 +46,22 @@ backend/
 ```
 
 ## 部分文件格式
+
+### description.json
+
+`resources` 目录下的 `description.json` 是整个源的介绍文件，应当包含源的名字、作者和唯一UUID以及规则。其中UUID不带横杠（`-`）。下面给出一个示例：
+
+```json
+{
+    "name": "Offical Example",
+    "author": "Paper Chemis Community Team",
+    "uuid": "6b3d2702c1c345499fc8617d664b3627",
+
+    "rules": {
+        "common": true
+    }
+}
+```
 
 ### list.json
 
@@ -100,6 +117,10 @@ backend/
 
 ## 最佳实践
 
-对于路径和 ID，均应当使用英文字母、下划线和数字，不应当使用包括中文和短横杠在内的其他字符。由此引发的问题后果自负。
+不遵守此部分内容引发的问题后果自负。
+
+对于同一物质/卡牌，其在各处的 ID 应该相同，即在 `cards` `matters` `reactions` `assets` 中的 ID 都应该相同，否则游戏本体将无法读取。
+
+对于路径和 ID，均应当使用英文字母、下划线和数字，不应当使用包括中文和短横杠在内的其他字符。
 
 所有 JSON 文件中的缩进均应当使用 2 个或 4 个空格，而非制表符（`\t`）。

@@ -3,6 +3,7 @@
         "en-US": "Carbon",
         "zh-CN": "碳"
     },
+    "type": "Element/Solid",
     "number": 6,
     "mass": 12
 }
